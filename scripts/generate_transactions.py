@@ -43,30 +43,76 @@ end_date = datetime(2025, 12, 31)
 
 days_between = (end_date - start_date).days
 
-def calculate_risk(customer, amount, transaction_time):
+def calculate_risk(customer, merchant, amount, transaction_time):
 
     risk_score = random.randint(5, 25)
-
     fraud_type = "None"
 
-    # Rule 1 - High Amount
-    if amount > 80000:
-        risk_score += 35
+    # Rule 1 - Credit Card transactions
+    if customer["Preferred_Payment_Mode"] == "Credit Card":
+        risk_score += 12
 
-    # Rule 2 - Night Transactions
-    if transaction_time.hour >= 0 and transaction_time.hour <= 4:
+    # Rule 2 - Mobile device
+    if customer["Preferred_Device"] == "Mobile":
+        risk_score += 8
+
+    # Rule 3 - Shopping & Electronics merchants
+    if merchant["Merchant_Category"] in [
+        "Shopping",
+        "Electronics"
+    ]:
+        risk_score += 15
+
+    # Rule 4 - High amount
+    if amount > 50000:
         risk_score += 20
 
-    # Rule 3 - Senior Citizens with High Amount
+    if amount > 80000:
+        risk_score += 15
+
+    # Rule 5 - Late night
+    if transaction_time.hour >= 22 or transaction_time.hour <= 4:
+        risk_score += 18
+
+    # Rule 6 - Senior Citizen
     if (
         customer["Customer_Segment"] == "Senior Citizen"
-        and amount > 40000
+        and amount > 30000
     ):
-        risk_score += 25
+        risk_score += 15
 
-    # Final Decision
-    if risk_score >= 60:
+    # Rule 7 - Business customers
+    if (
+        customer["Customer_Segment"] == "Business"
+        and amount > 75000
+    ):
+        risk_score += 10
 
+    # Rule 8 - Different customer and merchant city
+    if customer["City"] != merchant["City"]:
+        risk_score += 10
+
+    fraud_probability = 0
+
+    if risk_score >= 85:
+        fraud_probability = 0.70
+
+    elif risk_score >= 70:
+        fraud_probability = 0.35
+
+    elif risk_score >= 55:
+        fraud_probability = 0.15
+
+    elif risk_score >= 40:
+        fraud_probability = 0.03
+
+    is_fraud = (
+        "Yes"
+        if random.random() < fraud_probability
+        else "No"
+    )
+
+    if is_fraud == "Yes":
         fraud_type = random.choice([
             "Card Skimming",
             "Phishing",
@@ -74,12 +120,6 @@ def calculate_risk(customer, amount, transaction_time):
             "Identity Theft",
             "Account Takeover"
         ])
-
-        is_fraud = "Yes"
-
-    else:
-
-        is_fraud = "No"
 
     risk_score = min(risk_score, 100)
 
@@ -117,6 +157,7 @@ def generate_transaction(transaction_number):
 
     risk_score, fraud_type, is_fraud = calculate_risk(
         customer,
+        merchant,
         amount,
         transaction_time
     )

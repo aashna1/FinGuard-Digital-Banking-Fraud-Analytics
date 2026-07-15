@@ -1,0 +1,35 @@
+Merchant_ID,Merchant_Name,Merchant_Category,City,State
+MER001,Amazon India,Shopping,Chennai,Tamil Nadu
+MER002,Flipkart,Shopping,Bengaluru,Karnataka
+MER003,Myntra,Shopping,Bengaluru,Karnataka
+MER004,Ajio,Shopping,Bengaluru,Karnataka
+MER005,Reliance Digital,Shopping,Jaipur,Rajasthan
+MER006,Croma,Shopping,Lucknow,Uttar Pradesh
+MER007,Swiggy,Food,Bengaluru,Karnataka
+MER008,Zomato,Food,Hyderabad,Telangana
+MER009,Domino's,Food,Jaipur,Rajasthan
+MER010,McDonald's,Food,Pune,Maharashtra
+MER011,Burger King,Food,Delhi,Delhi
+MER012,Haldiram,Food,Mumbai,Maharashtra
+MER013,DMart,Grocery,Chennai,Tamil Nadu
+MER014,Reliance Fresh,Grocery,Ahmedabad,Gujarat
+MER015,BigBasket,Grocery,Delhi,Delhi
+MER016,Nature's Basket,Grocery,Hyderabad,Telangana
+MER017,Spencer's,Grocery,Bengaluru,Karnataka
+MER018,Indian Oil,Fuel,Hyderabad,Telangana
+MER019,HP Petrol Pump,Fuel,Hyderabad,Telangana
+MER020,Bharat Petroleum,Fuel,Kolkata,West Bengal
+MER021,Apollo Pharmacy,Healthcare,Chennai,Tamil Nadu
+MER022,MedPlus,Healthcare,Bengaluru,Karnataka
+MER023,Tata 1mg,Healthcare,Pune,Maharashtra
+MER024,Uber,Travel,Kolkata,West Bengal
+MER025,Ola,Travel,Delhi,Delhi
+MER026,IRCTC,Travel,Mumbai,Maharashtra
+MER027,MakeMyTrip,Travel,Chennai,Tamil Nadu
+MER028,BookMyShow,Entertainment,Delhi,Delhi
+MER029,PVR,Entertainment,Lucknow,Uttar Pradesh
+MER030,INOX,Entertainment,Chennai,Tamil Nadu
+MER031,Airtel,Utilities,Delhi,Delhi
+MER032,Jio,Utilities,Ahmedabad,Gujarat
+MER033,BSES,Utilities,Hyderabad,Telangana
+MER034,Tata Power,Utilities,Mumbai,Maharashtra
